@@ -34,6 +34,8 @@ public class OrderQueue {
     
     @RabbitListener(queues = "order_status_queue")
     public void updateOrderStatus(String msg) {
+    
+    
         //1、接收消息
         System.out.println("order_status_queue接收消息：" + msg);
         
