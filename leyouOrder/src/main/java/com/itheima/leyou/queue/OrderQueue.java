@@ -36,10 +36,8 @@ public class OrderQueue {
     public void updateOrderStatus(String msg) {
         //1、接收消息
         System.out.println("order_status_queue接收消息：" + msg);
-        
         //2、调用 service updateOrderStatus方法
         Map<String, Object> resultMap = iOrderService.updateOrderStatus(msg);
-        
         //3、执行失败，返回错误信息
         if (!(Boolean) resultMap.get("result")) {
             System.out.println("order_status_queue处理消息失败：" + resultMap.get("msg"));
@@ -47,6 +45,5 @@ public class OrderQueue {
             //4、成功，返回成功信息
             System.out.println("order_status_queue处理消息成功！" + msg);
         }
-        
     }
 }
