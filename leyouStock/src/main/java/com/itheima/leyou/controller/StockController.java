@@ -2,17 +2,18 @@ package com.itheima.leyou.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.itheima.leyou.service.IStockService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 @RestController
 public class StockController {
     
-    @Autowired
+    @Resource
     private IStockService iStockService;
     
     @RequestMapping(value = "/getStockList")
@@ -27,8 +28,8 @@ public class StockController {
     }
     
     
-    @RequestMapping(value = "/insertLimitPolicy/{json}")
-    public Map<String, Object> insertLimitPolicy(@PathVariable("json") String json) {
+    @RequestMapping(value = "/insertLimitPolicy")
+    public Map<String, Object> insertLimitPolicy(@RequestBody String json) {
         Map<String, Object> policyInfo = JSONObject.parseObject(json, Map.class);
         return iStockService.insertLimitPolicy(policyInfo);
     }

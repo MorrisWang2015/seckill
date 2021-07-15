@@ -1,9 +1,9 @@
 package com.itheima.leyou.service;
 
 import com.itheima.leyou.dao.IUserDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,11 +11,11 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements IUserService {
     
-    @Autowired
+    @Resource
     private IUserDao iUserDao;
     
     public Map<String, Object> getUser(String username, String password) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         
         //1、判断传入的参数
         if (username == null || username.equals("")) {
@@ -42,7 +42,7 @@ public class UserServiceImpl implements IUserService {
     }
     
     public Map<String, Object> insertUser(String username, String password) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         
         //1、判断传入的参数
         if (username == null || username.equals("")) {
