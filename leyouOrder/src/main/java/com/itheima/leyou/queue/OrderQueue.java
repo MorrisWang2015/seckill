@@ -3,15 +3,15 @@ package com.itheima.leyou.queue;
 import com.alibaba.fastjson.JSONObject;
 import com.itheima.leyou.service.IOrderService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 @Component
 public class OrderQueue {
     
-    @Autowired
+    @Resource
     private IOrderService iOrderService;
     
     @RabbitListener(queues = "order_queue")
