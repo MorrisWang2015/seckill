@@ -34,7 +34,7 @@ public class StockServiceImpl implements IStockService {
      * @return Map，包含list，包含一个商品的map
      */
     public Map<String, Object> getStockList() {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         //1、取stockDao的方法
         ArrayList<Map<String, Object>> list = iStockDao.getStockList();
         
@@ -57,7 +57,7 @@ public class StockServiceImpl implements IStockService {
     
     
     public Map<String, Object> getStock(String sku_id) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         
         //1、判断前端传入的数据
         if (sku_id == null || sku_id.equals("")) {
@@ -90,7 +90,7 @@ public class StockServiceImpl implements IStockService {
     
     
     public Map<String, Object> insertLimitPolicy(Map<String, Object> policyInfo) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         
         //1、判断传入的参数
         if (policyInfo == null || policyInfo.isEmpty()) {
@@ -146,7 +146,7 @@ public class StockServiceImpl implements IStockService {
     
     
     private Map<String, Object> getLimitPolicy(ArrayList<Map<String, Object>> list) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         
         for (Map<String, Object> skuMap : list) {
             String policy = stringRedisTemplate.opsForValue().get("LIMIT_POLICY_" + skuMap.get("sku_id").toString());

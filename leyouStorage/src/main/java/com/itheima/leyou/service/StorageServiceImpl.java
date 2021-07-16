@@ -14,7 +14,7 @@ public class StorageServiceImpl implements IStorageService {
     private IStorageDao iStorageDao;
     
     public Map<String, Object> insertStorage(String sku_id, double in_quanty, double out_quanty) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         
         //1、判断传入的参数
         if (sku_id == null || sku_id.equals("")) {

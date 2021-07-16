@@ -14,7 +14,7 @@ public class OrderDaoImpl implements IOrderDao {
     private JdbcTemplate jdbcTemplate;
     
     public Map<String, Object> insertOrder(Map<String, Object> orderInfo) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         
         String sql = "insert into tb_order (order_id, total_fee, actual_fee, post_fee, payment_type, user_id, status, create_time) " +
                 "values (?, ?, ?, ?, ?, ?, ?, ?)";

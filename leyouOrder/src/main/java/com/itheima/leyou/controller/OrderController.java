@@ -35,7 +35,7 @@ public class OrderController {
     public Map<String, Object> payOrder(@PathVariable("order_id") String order_id, @PathVariable("sku_id") String sku_id) {
         //正常情况下在这里会调用支付接口，我们这里模拟支付已经返回正常数据
         boolean isPay = true;
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         if (!isPay) {
             resultMap.put("result", false);
             resultMap.put("msg", "支付接口调用失败！");

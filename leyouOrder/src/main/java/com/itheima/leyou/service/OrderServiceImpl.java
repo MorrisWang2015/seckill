@@ -4,11 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itheima.leyou.dao.IOrderDao;
 import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,16 +18,16 @@ import java.util.Map;
 @Service
 public class OrderServiceImpl implements IOrderService {
     
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
     
-    @Autowired
+    @Resource
     private RestTemplate restTemplate;
     
-    @Autowired
+    @Resource
     private AmqpTemplate amqpTemplate;
     
-    @Autowired
+    @Resource
     private IOrderDao iOrderDao;
     
     public Map<String, Object> createOrder(String sku_id, String user_id) {
@@ -76,9 +76,9 @@ public class OrderServiceImpl implements IOrderService {
                         // tb_order: order_id, total_fee, actual_fee, post_fee, payment_type, user_id, status, create_time
                         // tb_order_detail: order_id, sku_id, num, title, own_spec, price, image, create_time
                         // tb_sku: sku_id, title, images, stock, price, indexes, own_spec
-                        
-                        
-                        Map<String, Object> orderInfo = new HashMap<String, Object>();
+    
+    
+                        Map<String, Object> orderInfo = new HashMap<>();
                         
                         String sku = stringRedisTemplate.opsForValue().get("SKU_" + sku_id);
                         Map<String, Object> skuMap = JSONObject.parseObject(sku, Map.class);
@@ -183,7 +183,7 @@ public class OrderServiceImpl implements IOrderService {
     }
     
     public Map<String, Object> updateOrderStatus(String order_id) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         boolean result = iOrderDao.updateOrderStatus(order_id);
         if (!result) {
             resultMap.put("result", false);

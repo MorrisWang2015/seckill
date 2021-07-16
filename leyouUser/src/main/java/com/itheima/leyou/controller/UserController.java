@@ -20,7 +20,7 @@ public class UserController {
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Map<String, Object> login(String username, String password, HttpServletRequest httpServletRequest) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         
         //1、取会员
         resultMap = iUserService.getUser(username, password);

@@ -22,7 +22,7 @@ public class StorageDaoImpl implements IStorageDao {
     private JdbcTemplate jdbcTemplate;
     
     public Map<String, Object> insertStorage(String sku_id, double in_quanty, double out_quanty) {
-        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> resultMap = new HashMap<>();
         
         //1、先判断主表里有没有？
         String sql = "select id from tb_stock_storage where sku_id = ?";
